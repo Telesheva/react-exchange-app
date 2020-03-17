@@ -1,7 +1,6 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
-import ExchangePage from "./components/ExchangePage/ExchangePage.tsx";
-import ExchangePointsMap from "./components/ExchangePointsMap/ExchangePointsMap.tsx";
+import { ExchangePage, ExchangePointsMap } from "./components/index";
 
 export default function Routes() {
   return (

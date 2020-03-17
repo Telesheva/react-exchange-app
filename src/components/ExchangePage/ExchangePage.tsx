@@ -1,6 +1,6 @@
 import React from "react";
 import "./ExchangePage.scss";
-import Layout from "../Layout/Layout";
+import { Layout } from "../index";
 import { Button } from "../common/index";
 
 const ExchangePage = () => {
