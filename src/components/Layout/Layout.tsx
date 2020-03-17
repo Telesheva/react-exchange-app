@@ -1,7 +1,6 @@
 import * as React from "react";
 import "./Layout.scss";
-import Navbar from "../common/Navigation/Navbar/Navbar";
-import Footer from "../common/Navigation/Footer/Footer";
+import { Navbar, Footer } from "../common/index";
 
 export interface LayoutComponentProps {
   children: React.ReactNode;

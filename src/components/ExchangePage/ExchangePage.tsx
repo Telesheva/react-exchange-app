@@ -1,12 +1,14 @@
 import React from "react";
 import "./ExchangePage.scss";
 import Layout from "../Layout/Layout";
+import { Button } from "../common/index";
 
 const ExchangePage = () => {
   return (
     <div className="exchange-page">
       <Layout>
         <p>Exchange Page Component!</p>
+        <Button colorScheme="transparent">Test</Button>
       </Layout>
     </div>
   );
