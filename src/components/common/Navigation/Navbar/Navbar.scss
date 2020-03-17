@@ -1,0 +1,28 @@
+.navbar {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  background-color: #343a40;
+  padding: 25px 15px;
+  &__brand {
+    font-size: 1.7rem;
+    color: #ffffff;
+  }
+  hr {
+    height: 100%;
+    margin: 0 10px;
+  }
+  &__list {
+    display: inline-flex;
+    align-items: center;
+    &_item {
+      margin-right: 25px;
+      cursor: pointer;
+      text-transform: uppercase;
+      color: #ffffff80;
+      &:hover {
+        color: #ffffffdf;
+      }
+    }
+  }
+}
