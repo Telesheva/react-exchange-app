@@ -1,17 +1,16 @@
 import React from "react";
 import "./ExchangePage.scss";
-import { Layout } from "../index";
-import { Button } from "../common/index";
+import {CurrencyCalculatorForm, ExchangeRatesList, Layout} from "../index";
 
 const ExchangePage = () => {
-  return (
-    <div className="exchange-page">
-      <Layout>
-        <p>Exchange Page Component!</p>
-        <Button colorScheme="transparent">Test</Button>
-      </Layout>
-    </div>
-  );
+    return (
+        <Layout>
+            <div className="exchange-page">
+                <ExchangeRatesList/>
+                <CurrencyCalculatorForm/>
+            </div>
+        </Layout>
+    );
 };
 
 export default ExchangePage;

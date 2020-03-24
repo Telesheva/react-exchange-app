@@ -1,0 +1,12 @@
+.exchange-rates {
+  text-align: left;
+  h2 {
+    text-transform: uppercase;
+  }
+  &__list {
+    display: inline-flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+}

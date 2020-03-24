@@ -5,8 +5,9 @@ import { ExchangePage, ExchangePointsMap } from "./components/index";
 export default function Routes() {
   return (
     <Switch>
+      <Route exact path="/" component={ExchangePage}/>
       <Route path="/home" component={ExchangePage} />
-      <Route exact path="/map" component={ExchangePointsMap} />
+      <Route path="/map" component={ExchangePointsMap} />
       <Route
         exact
         path={"**"}

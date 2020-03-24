@@ -11,6 +11,7 @@
   hr {
     height: 100%;
     margin: 0 10px;
+    border: #ff7507 1px solid;
   }
   &__list {
     display: inline-flex;
@@ -21,7 +22,7 @@
       text-transform: uppercase;
       color: #ffffff80;
       &:hover {
-        color: #ffffffdf;
+        color: #ff7507;
       }
     }
   }
