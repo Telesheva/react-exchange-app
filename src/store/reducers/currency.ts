@@ -1,7 +1,8 @@
-import {FETCH_CURRENCIES_SUCCESS, FETCH_LATEST_RATES_SUCCESS} from "../actions/actionTypes";
+import {FETCH_CURRENCY_BY_ABBREVIATION_SUCCESS, FETCH_LATEST_RATES_SUCCESS} from "../actions/actionTypes";
 
 const initialState = {
-    currencies: null,
+    currency: '',
+    base: '',
     rates: {}
 };
 
@@ -9,13 +10,13 @@ type InitialState = typeof initialState;
 
 export default function currencyReducer(state = initialState, action: any): InitialState {
     switch (action.type) {
-        case FETCH_CURRENCIES_SUCCESS:
+        case FETCH_CURRENCY_BY_ABBREVIATION_SUCCESS:
             return {
-                ...state, currencies: action.currencies
+                ...state, currency: action.currency
             };
         case FETCH_LATEST_RATES_SUCCESS:
             return {
-                ...state, currencies: action.rates.data.rates
+                ...state, rates: action.rates, base: action.base
             };
         default:
             return state;

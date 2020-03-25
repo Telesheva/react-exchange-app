@@ -1,12 +1,31 @@
-.exchange-rates {
-  text-align: left;
-  h2 {
-    text-transform: uppercase;
+.exchange-layout {
+  display: flex;
+  flex-direction: column;
+  .exchange-rates {
+    text-align: left;
+    padding: 5px;
+
+    h2, h3 {
+      text-transform: uppercase;
+    }
+
+    &__base {
+      color: #ff7507;
+      margin-top: 12px;
+    }
+
+    &__list {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      grid-gap: 30px;
+      margin-top: 15px;
+      width: 100%;
+      overflow: hidden;
+      padding: 15px;
+    }
   }
-  &__list {
-    display: inline-flex;
-    justify-content: flex-start;
-    flex-wrap: wrap;
-    width: 100%;
+  .btn {
+    margin-top: 20px;
+    align-self: center;
   }
 }

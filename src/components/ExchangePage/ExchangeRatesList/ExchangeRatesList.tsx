@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import "./ExchangeRatesList.scss";
 import {ExchangeRateItem} from "../../index";
 import {useDispatch} from "react-redux";
@@ -7,35 +7,43 @@ import {
     TypedUseSelectorHook,
 } from 'react-redux';
 import rootReducer from "../../../store/reducers/rootReducer";
-import {fetchCurrencies, fetchExchangeRates} from "../../../store/actions/currency";
+import {fetchExchangeRates} from "../../../store/actions/currency";
+import {Button} from "../../common";
 
 export interface IRates {
-    [k: string]: number
+    rates: {[k: string]: number};
+    base: string
 }
 
 export const ExchangeRatesList: React.FC = () => {
     type RootState = ReturnType<typeof rootReducer>
     const useSelector: TypedUseSelectorHook<RootState> = useReduxSelector;
-    const currencies = useSelector(state => state.currency.currencies);
-    //const rates: IRates = useSelector(state => state.currency.rates);
+    const {rates, base}: IRates = useSelector(state => state.currency);
+
+    const [showMore, setShowMore] = useState(false);
+    const [showedHeight, setShowedHeight] = useState(450);
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(fetchCurrencies());
         dispatch(fetchExchangeRates());
     }, []);
 
     return (
+        <div className="exchange-layout">
         <div className="exchange-rates">
             <h2>Exchange Rates on 18 March 2020</h2>
-            <ul className="exchange-rates__list">
-                {currencies ? Object.values(currencies).map(currency => {
-                    if (typeof currency === 'string') {
-                        console.log(currency);
-                        return <ExchangeRateItem rateItem={currency} key={Math.random()}/>
-                    }
+            <h3 className="exchange-rates__base">Base: {base}</h3>
+            <ul className="exchange-rates__list" style={{height: `${showedHeight}px`}}>
+                {rates ? Object.entries(rates).map(rate => {
+                    return <ExchangeRateItem rateItem={rate} key={Math.random()}/>
                 }) : <h2>Loading...</h2>}
             </ul>
+        </div>
+        {(rates && showedHeight <= 4300) && <Button colorScheme="transparent" onClick={() => {
+            setShowMore(true);
+            if (showedHeight <= 4300) setShowedHeight(showedHeight + 450);
+            console.log(showedHeight, showMore);
+        }}>Show more</Button>}
         </div>
     )
 };
