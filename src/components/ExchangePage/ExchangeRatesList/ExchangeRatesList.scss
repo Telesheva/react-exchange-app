@@ -18,10 +18,11 @@
       display: grid;
       grid-template-columns: repeat(6, 1fr);
       grid-gap: 30px;
-      margin-top: 15px;
+      margin-top: 5px;
       width: 100%;
       overflow: hidden;
       padding: 15px;
+      transition: height 0.7s ease-in-out;
     }
   }
   .btn {

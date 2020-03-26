@@ -1,22 +1,36 @@
-import {FETCH_CURRENCY_BY_ABBREVIATION_SUCCESS, FETCH_LATEST_RATES_SUCCESS} from "../actions/actionTypes";
+import {
+    CONVERT_CURRENCY_ERROR,
+    CONVERT_CURRENCY_SUCCESS,
+    FETCH_LATEST_RATES_ERROR,
+    FETCH_LATEST_RATES_SUCCESS
+} from "../actions/actionTypes";
 
 const initialState = {
-    currency: '',
     base: '',
-    rates: {}
+    rates: {},
+    convertedCurrency: null,
+    error: ''
 };
 
 type InitialState = typeof initialState;
 
 export default function currencyReducer(state = initialState, action: any): InitialState {
     switch (action.type) {
-        case FETCH_CURRENCY_BY_ABBREVIATION_SUCCESS:
-            return {
-                ...state, currency: action.currency
-            };
         case FETCH_LATEST_RATES_SUCCESS:
             return {
                 ...state, rates: action.rates, base: action.base
+            };
+        case FETCH_LATEST_RATES_ERROR:
+            return {
+                ...state, error: action.error
+            };
+        case CONVERT_CURRENCY_SUCCESS:
+            return {
+                ...state, convertedCurrency: action.convertedAmount
+            };
+        case CONVERT_CURRENCY_ERROR:
+            return {
+                ...state, error: action.error
             };
         default:
             return state;

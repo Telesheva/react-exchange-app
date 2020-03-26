@@ -3,17 +3,13 @@
   border: 1px solid #ff7507;
   width: 100%;
   padding: 20px 0 40px 70px;
-  margin-top: 40px;
+  margin: 35px 0;
   &__text {
     margin: 10px 25px 10px 0;
     font-size: 1.7rem;
   }
   p {
     font-size: 1.2rem;
-  }
-  &__radios {
-    display: flex;
-    align-items: center;
   }
   &__result {
     display: flex;

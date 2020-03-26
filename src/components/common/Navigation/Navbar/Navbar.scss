@@ -18,12 +18,14 @@
     align-items: center;
     &_item {
       margin-right: 25px;
-      cursor: pointer;
-      text-transform: uppercase;
-      color: #ffffff80;
-      &:hover {
-        color: #ff7507;
-      }
+    }
+  }
+  a {
+    cursor: pointer;
+    text-transform: uppercase;
+    color: #ffffff80;
+    &:hover {
+      color: #ff7507;
     }
   }
 }
