@@ -5,9 +5,12 @@ export interface selectProps {
     name?: string;
     disabled?: boolean;
     required?: boolean;
+    id?: string;
     size?: number;
     defaultValue?: string | "default";
-    options?: Array<string>
+    options?: Array<string>;
+    onChange?: ((event: React.ChangeEvent<HTMLSelectElement>) => void) | undefined;
+    selectedOption?: string;
 }
 
 const Select = ({
@@ -16,14 +19,18 @@ const Select = ({
                     name,
                     required,
                     size,
-                    defaultValue
+                    defaultValue,
+                    id,
+                    onChange,
+                    selectedOption
                 }: selectProps) => {
     return (
-        <select size={size} name={name} required={required} disabled={disabled} className="select">
+        <select size={size} id={id} name={name} value={selectedOption && selectedOption} onChange={onChange} required={required} disabled={disabled}
+                className="select">
             {options?.map((value, index) => {
-                    return <option key={index + Math.random()} value={value}>
-                        {value}
-                    </option>
+                return <option key={index + Math.random()} value={value}>
+                    {value}
+                </option>
             })}
         </select>
     )

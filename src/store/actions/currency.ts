@@ -46,7 +46,7 @@ export type RateType = { [k: string]: number }
 export function fetchExchangeRates(): ThunkAction<Promise<void>, {}, {}, ActionsType> {
     return async (dispatch: ThunkDispatch<{}, {}, ActionsType>) => {
         try {
-            const {data}: RatesType = await axios.get('https://openexchangerates.org/api/latest.json?app_id=0096e9010d37405ebb1b560dd90043b5');
+            const {data}: RatesType = await axios.get('https://openexchangerates.org/api/latest.json?app_id=0eef8c31ba8042ac9895161e228730b5');
             dispatch(fetchExchangeRatesSuccess(data.rates, data.base));
         } catch (e) {
             dispatch(fetchLatestRatesError(e))
@@ -72,7 +72,7 @@ export function fetchLatestRatesError(error: string): FetchLatestRatesErrorActio
 export function convertCurrency(amount: number, from: string, to: string): ThunkAction<Promise<void>, {}, {}, ActionsType> {
     return async (dispatch: ThunkDispatch<{}, {}, ActionsType>) => {
         try {
-            const {data}: RatesType = await axios.get(`https://openexchangerates.org/api/convert/${amount}/${from}/${to}?app_id=0096e9010d37405ebb1b560dd90043b5`);
+            //const {data}: RatesType = await axios.get(`https://openexchangerates.org/api/convert/${amount}/${from}/${to}?app_id=0096e9010d37405ebb1b560dd90043b5`);
             //dispatch(convertCurrencySuccess());
         } catch (e) {
             dispatch(convertCurrencyError(e))

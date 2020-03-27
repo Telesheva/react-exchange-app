@@ -7,7 +7,7 @@ import {
     TypedUseSelectorHook,
 } from 'react-redux';
 import rootReducer from "../../../store/reducers/rootReducer";
-import {convertCurrency, fetchExchangeRates} from "../../../store/actions/currency";
+import {fetchExchangeRates} from "../../../store/actions/currency";
 import {Button, Loader} from "../../common";
 import {format} from "date-fns";
 
@@ -24,13 +24,10 @@ export const ExchangeRatesList: React.FC = () => {
 
     const [showMore, setShowMore] = useState(false);
     const [showedHeight, setShowedHeight] = useState(450);
-    const convertedCurrency: number | null = useSelector(state => state.currency.convertedCurrency);
     const dispatch = useDispatch();
 
     useEffect(() => {
         dispatch(fetchExchangeRates());
-        dispatch(convertCurrency(120.50, 'UAH', 'USD'));
-        console.log(convertedCurrency);
     }, [dispatch]);
 
     return (
