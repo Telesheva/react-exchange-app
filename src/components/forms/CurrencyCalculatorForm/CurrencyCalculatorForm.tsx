@@ -4,14 +4,16 @@ import {Button, Input, Select} from "../../common";
 import rootReducer from "../../../store/reducers/rootReducer";
 import {useDispatch} from "react-redux";
 import {TypedUseSelectorHook, useSelector as useReduxSelector} from "react-redux";
-import {IRates} from "../../ExchangePage/ExchangeRatesList/ExchangeRatesList";
+import {IRates} from "../../../models/models";
 import {fetchExchangeRates} from "../../../store/actions/currency";
 
 const CurrencyCalculatorForm = () => {
     type RootState = ReturnType<typeof rootReducer>
     const useSelector: TypedUseSelectorHook<RootState> = useReduxSelector;
     const {rates, base}: IRates = useSelector(state => state.currency);
+
     const dispatch = useDispatch();
+
     const [convert, setConvert] = useState({
         amountForConvert: 0,
         currencyForConvert: '',

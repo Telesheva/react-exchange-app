@@ -6,42 +6,15 @@ import {
     FETCH_LATEST_RATES_SUCCESS
 } from "./actionTypes";
 import {ThunkAction, ThunkDispatch} from 'redux-thunk';
-
-
-type ActionsType = FetchLatestRatesSuccessActionType
-    | FetchLatestRatesErrorActionType
-    | ConvertCurrencySuccessActionType
-    | ConvertCurrencyErrorActionType;
-
-type FetchLatestRatesSuccessActionType = {
-    type: typeof FETCH_LATEST_RATES_SUCCESS,
-    rates: RateType,
-    base: string
-}
-
-type FetchLatestRatesErrorActionType = {
-    type: typeof FETCH_LATEST_RATES_ERROR,
-    error: string
-}
-
-type ConvertCurrencySuccessActionType = {
-    type: typeof CONVERT_CURRENCY_SUCCESS,
-    convertedAmount: number
-}
-
-type ConvertCurrencyErrorActionType = {
-    type: typeof CONVERT_CURRENCY_ERROR,
-    error: string
-}
-
-export type RatesType = {
-    [k: string]: {
-        rates: { [k: string]: number }
-        base: string
-    }
-}
-
-export type RateType = { [k: string]: number }
+import {
+    ActionsType,
+    ConvertCurrencyErrorActionType,
+    ConvertCurrencySuccessActionType,
+    FetchLatestRatesErrorActionType,
+    FetchLatestRatesSuccessActionType,
+    RatesType,
+    RateType
+} from "../../models/models";
 
 export function fetchExchangeRates(): ThunkAction<Promise<void>, {}, {}, ActionsType> {
     return async (dispatch: ThunkDispatch<{}, {}, ActionsType>) => {

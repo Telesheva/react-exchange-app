@@ -10,21 +10,19 @@ import rootReducer from "../../../store/reducers/rootReducer";
 import {fetchExchangeRates} from "../../../store/actions/currency";
 import {Button, Loader} from "../../common";
 import {format} from "date-fns";
-
-export interface IRates {
-    rates: {[k: string]: number};
-    base: string
-}
+import {IRates} from "../../../models/models";
 
 export const ExchangeRatesList: React.FC = () => {
     type RootState = ReturnType<typeof rootReducer>
     const useSelector: TypedUseSelectorHook<RootState> = useReduxSelector;
     const {rates, base}: IRates = useSelector(state => state.currency);
+
+    const dispatch = useDispatch();
+
     const date: string = format(new Date(), 'dd LLLL yyyy');
 
     const [showMore, setShowMore] = useState(false);
     const [showedHeight, setShowedHeight] = useState(450);
-    const dispatch = useDispatch();
 
     useEffect(() => {
         dispatch(fetchExchangeRates());
