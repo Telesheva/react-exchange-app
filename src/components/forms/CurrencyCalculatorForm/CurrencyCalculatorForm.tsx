@@ -8,7 +8,6 @@ import {IRates} from "../../ExchangePage/ExchangeRatesList/ExchangeRatesList";
 import {fetchExchangeRates} from "../../../store/actions/currency";
 
 const CurrencyCalculatorForm = () => {
-
     type RootState = ReturnType<typeof rootReducer>
     const useSelector: TypedUseSelectorHook<RootState> = useReduxSelector;
     const {rates, base}: IRates = useSelector(state => state.currency);
@@ -18,6 +17,7 @@ const CurrencyCalculatorForm = () => {
         currencyForConvert: '',
         convertedValue: 0
     });
+    const [errorMessage, setErrorMessage] = useState('');
 
     useEffect(() => {
         dispatch(fetchExchangeRates());
@@ -25,20 +25,28 @@ const CurrencyCalculatorForm = () => {
 
     const onSubmitFormHandler = (event: FormEvent<HTMLFormElement>): void => {
         event.preventDefault();
-        let rate = 0;
-        Object.entries(rates).forEach(rateArr => {
-            if (rateArr[0] === convert.currencyForConvert) {
-                rate = rateArr[1];
-                setConvert({...convert, convertedValue: (convert.amountForConvert * rate)});
-            }
-        });
+        if (convert.amountForConvert && convert.currencyForConvert) {
+            Object.entries(rates).forEach(rateArr => {
+                if (rateArr[0] === convert.currencyForConvert) setConvert({
+                    ...convert,
+                    convertedValue: (convert.amountForConvert * rateArr[1])
+                });
+            });
+        } else {
+            window.alert('Enter all the data!');
+        }
     };
 
     const onInputChangeHandler = (event: ChangeEvent<HTMLInputElement>): void => {
-        setConvert({
-            ...convert,
-            amountForConvert: Number(event.target.value)
-        });
+        if (isNaN(Number(event.target.value))) {
+            setErrorMessage('Only numbers allowed!');
+        } else {
+            setErrorMessage('');
+            setConvert({
+                ...convert,
+                amountForConvert: Number(event.target.value)
+            });
+        }
     };
 
     const onSelectChangeHandler = (event: ChangeEvent<HTMLSelectElement>): void => {
@@ -52,7 +60,11 @@ const CurrencyCalculatorForm = () => {
         <form className="calculator-form" onSubmit={onSubmitFormHandler}>
             <div className="calculator-form__result">
                 <div className="calculator-form__result_inputs">
-                    <Input type="number" onChange={onInputChangeHandler}/>
+                    <Input
+                        type="text"
+                        onChange={onInputChangeHandler}
+                        errorMessage={errorMessage}
+                    />
                     <label htmlFor="select1">
                         FROM <strong>{base}</strong> TO:
                     </label>

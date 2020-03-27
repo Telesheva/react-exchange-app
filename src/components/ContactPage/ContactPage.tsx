@@ -11,7 +11,7 @@ const ContactPage = () => {
             <div className="contact-page">
                 <ul className="contact-page__list">
                     <li className="contact-page__item">
-                        <strong>Address: Ukraine, Kharkiv, Nauky Avenue, 58</strong>
+                        <strong>Main office's address: Ukraine, Kharkiv, Novgorodskaya Street, 18</strong>
                     </li>
                     <li className="contact-page__item">
                         <strong>Phone numbers: </strong>

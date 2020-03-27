@@ -1,0 +1,53 @@
+{
+  "MAP_URL": "https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=AIzaSyC1n4_6XjhsViXd70OE1WQK3y2kJHQ_tUc",
+  "points": [
+    {
+      "id": 1,
+      "address": "Novgorodskaya St, 18",
+      "lat": 50.0217367,
+      "lng": 36.2273929
+    },
+    {
+      "id": 2,
+      "address": "Konstytutsii Square, 28",
+      "lat": 49.9887759,
+      "lng": 36.2318833
+    },
+    {
+      "id": 3,
+      "address": "Sumskaya St, 80",
+      "lat": 50.0064197,
+      "lng": 36.2371308
+    },
+    {
+      "id": 4,
+      "address": "Dmytrivs'ka St, 5",
+      "lat": 49.9977917,
+      "lng": 36.2377413
+    },
+    {
+      "id": 5,
+      "address": "Ivanova St, 37",
+      "lat": 49.9930156,
+      "lng": 36.2324495
+    },
+    {
+      "id": 6,
+      "address": "Danylevskoho St, 16",
+      "lat": 49.9892282,
+      "lng": 36.2103571
+    },
+    {
+      "id": 7,
+      "address": "Haharina Ave, 20",
+      "lat": 49.9797062,
+      "lng": 36.2511589
+    },
+    {
+      "id": 8,
+      "address": "Poltavskyi Shliakh St, 31",
+      "lat": 49.9866731,
+      "lng": 36.2173507
+    }
+  ]
+}
